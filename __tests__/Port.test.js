@@ -1,37 +1,56 @@
 const Port = require('../src/Port.js');
-
-
+const Itinerary = require('../src/Itinerary');
+const Ship = require('../src/Ship.js');
 describe('Port', () => {
-    it('can be instantiated', () => {
-        expect(new Port()).toBeInstanceOf(Object);
-    });
+    describe('with ships and an itinerary', () => {
+        let ship;
+        let liverpool;
+        let dublin;
+        let itinerary;
 
-    it('has a name property', () => {
-        const port = new Port('Liverpool');
-
-        expect(port.name).toBe('Liverpool');
-    })
-
-    it('can add a ship', () => {
-        const port = new Port('Liverpool');
-        const ship = {};
-
-        port.addShip(ship);
-
-        expect(port.ships).toContain(ship);
-    });
-
-    it('can remove a ship', () => {
-        const port = new Port('Liverpool');
-        const titanic = {};
-        const queenMary = {};
-
-        port.addShip(titanic);
-        port.addShip(queenMary);
-        port.removeShip(queenMary);
-
-        expect(port.ships).toEqual([titanic]);
-    })
+        beforeEach(() => {
+            liverpool = new Port('Liverpool');
+            dublin = new Port('Dublin');
+            itinerary = new Itinerary([liverpool, dublin]);
+            ship = new Ship(itinerary);
+        });
+        it('can be instantiated', () => {
+            expect(new Port()).toBeInstanceOf(Object);
+        });
+        it('has a name property', () => {
 
     
+            expect(liverpool.name).toBe('Liverpool');
+        })
+        it('can add a ship', () => {
+            const liverpool = new Port('Liverpool');
+            const ship = {};
+    
+            liverpool.addShip(ship);
+    
+            expect(liverpool.ships).toContain(ship);
+        });
+        it('can remove a ship', () => {
+            const liverpool = new Port('Liverpool');
+            const titanic = {};
+            const queenMary = {};
+    
+            liverpool.addShip(titanic);
+            liverpool.addShip(queenMary);
+            liverpool.removeShip(queenMary);
+    
+            expect(liverpool.ships).toEqual([titanic]);
+        })
+
+
+
+
+    });
+
+    
+
+
+
+
+
 })
