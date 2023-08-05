@@ -24,7 +24,7 @@ describe('Port', () => {
         })
         it('can add a ship', () => {
             const liverpool = new Port('Liverpool');
-            const ship = {};
+            const ship = jest.fn();
     
             liverpool.addShip(ship);
     
@@ -32,8 +32,8 @@ describe('Port', () => {
         });
         it('can remove a ship', () => {
             const liverpool = new Port('Liverpool');
-            const titanic = {};
-            const queenMary = {};
+            const titanic = jest.fn();
+            const queenMary = jest.fn();
     
             liverpool.addShip(titanic);
             liverpool.addShip(queenMary);
