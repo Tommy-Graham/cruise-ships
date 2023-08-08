@@ -25,7 +25,10 @@ describe('Ship', () => {
                 ships: []
               };
 
-            itinerary = new Itinerary([liverpool, dublin]);
+            itinerary = {
+                ports: [liverpool, dublin]
+            };
+            
             ship = new Ship(itinerary);
         });
         it('can be instantiated', () => {
